@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+ input[type="date"],
+ input[type="email"],
+ select
+{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #005b96;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+a {
+  text-decoration: none;
+  color: #4CAF50;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+td {
+  padding: 5px;
+  text-align: right;
+}
+
+td:first-child {
+  text-align: left;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+</style>
+<form action="" method="POST">
+    {% csrf_token %}
+    <td><p align="left">Patient Doctor or Nurse</p></td>
+    <td><select name="post">
+        <option value="">Select User Type</option>
+        <option value="Patient">Patient</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Nurse">Nurse</option>
+    </select></td>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

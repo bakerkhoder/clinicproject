@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+
+{% load static %}
+{% block content %}
+<body style="background-image: url({% static 'images/clinic.jpg' %});
+ background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+<head>
+    <link rel="stylesheet" href="{% static 'styles/style1.css' %}" />
+</head>
+{% if request.user.is_authenticated and request.user.doctor %}
+<p align="center">Hello Doctor {{request.user.doctor.name}}</p>
+{% endif %}
+
+{% if request.user.is_superuser %}
+<p  align="center">Hello admin {{request.user}}</p>
+{% endif %}
+
+{% if request.user.is_authenticated and request.user.patient %}
+<p align="center">Hello Patient {{request.user.patient.name}}</p>
+{% endif %}
+
+{% if request.user.is_authenticated and request.user.nurse %}
+<p align="center">Hello Nurse {{request.user.nurse.name}}</p>
+{% endif %}
+<!--<img src="{% static 'images/farm.jpeg' %}">-->
+</body>
+
+{%  endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        .main{
+            width: 100%;
+            height: auto;
+            background-color: #EFEFEF;
+            padding: 100px 0;
+        }
+
+        .custom_heading-container{
+            display: flex;
+            justify-content: center;
+        }
+
+        .custom_heading-container h2{
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .custom_heading-container h2::after{
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 5px;
+            background-color: #10e7f4;
+        }
+
+        .img-box{
+            margin: 45px 0;
+            margin-left: 40px;
+        }
+
+        .img-box img{
+            width: 90%;
+            margin-left: 20px;
+            height: 50vh;
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        .detail-box p{
+            font-weight: 1.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    {% block content %}
+        <div class="main">
+            <div class="container">
+                <div class="custom_heading-container">
+                    <h2>About us</h2>
+                </div>
+                <div class="img-box">
+                    <img src="{% static './images/clinic.jpg' %}" />
+                </div>
+                <div class="detail-box">
+                    <p>Our mission is to provide high-quality and comprehensive healthcare services to our patients. Our team of healthcare professionals is dedicated to delivering personalized care that is tailored to meet the unique needs of each patient. We offer a wide range of medical services, including preventive care, diagnostic testing, and treatment for acute and chronic conditions. Our state-of-the-art facilities are equipped with the latest technology to ensure accurate and timely diagnoses. At our clinic, we prioritize the well-being of our patients above all else, and we are committed to delivering compassionate care that fosters lasting relationships. Thank you for considering us as your healthcare provider.</p>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}
+    {% include 'footer.html' %}
+</body>
+</html>

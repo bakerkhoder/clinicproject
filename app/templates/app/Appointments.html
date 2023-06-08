@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% block content %}
+<p><a class="button" href="{{request.META.HTTP_REFERER}}">Go back</a></p>
+<style>
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: blue;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+<table>
+
+    <th>Doctor</th>
+    <th>Patient</th>
+    <th>Nurse</th>
+    <th>treatment</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Update</th>
+    <th>Delete</th>
+     {% for appointment in appointments %}
+    <tr>
+    <td>{{appointment.doctor}}</td>
+    <td>{{appointment.patient}}</td>
+    <td>{{appointment.nurse}}</td>
+    <td>{{appointment.treatment}}</td>
+    <td>{{appointment.appoint_date}}</td>
+    <td>{{appointment.appoint_time}}</td>
+    <td><a style="color:red;" href="{% url 'update_appointment' appointment.id %}">Update</a></td>
+    <td><a style="color:blue;" href="{% url 'delete_appointment' appointment.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
